@@ -27,6 +27,7 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body
+                cz-shortcut-listen="true"
                 className={`${plexSans.variable} ${plexMono.variable} antialiased`}
             >
                 {children}

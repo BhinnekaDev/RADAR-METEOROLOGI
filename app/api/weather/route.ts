@@ -1,8 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(request: NextRequest) {
+    const apiKey2 = process.env.NEXT_PUBLIC_OPENWEATHER_API_KEY!;
+
     try {
-        const apiKey = "d50a9478910ae00fb9d7cad7fc0c66f9";
+        const apiKey = apiKey2;
 
         // Ambil query params lat dan lon
         const { searchParams } = new URL(request.url);

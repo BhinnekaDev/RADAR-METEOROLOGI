@@ -7,6 +7,7 @@ const weatherIcon = (icon: string) =>
     divIcon({
         html: `
       <div class="radar-icon">
+        <div class="radar-effect green"></div>
         <img src="https://openweathermap.org/img/wn/${icon}@2x.png" alt="weather icon" />
       </div>
     `,

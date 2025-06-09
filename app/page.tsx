@@ -1,9 +1,9 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
-import { FaSun, FaMoon } from "react-icons/fa";
 import dynamic from "next/dynamic";
+import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
+import { FaSun, FaMoon } from "react-icons/fa";
 
 const MapView = dynamic(() => import("@/components/MapView"), { ssr: false });
 
