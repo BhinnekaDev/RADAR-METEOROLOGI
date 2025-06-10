@@ -22,17 +22,15 @@ export default function Home() {
 
     return (
         <div
-            className={`min-h-screen p-8 font-plex-sans transition-colors duration-700
-                ${
-                    isDarkMode
-                        ? "bg-gradient-to-b from-[#001529] via-[#003366] to-[#001529] text-[#80d8ff]"
-                        : "bg-gradient-to-b from-[#99ccff] via-[#3399ff] to-[#0066cc] text-[#001529]"
-                }`}
+            className={`min-h-screen transition-colors duration-700 font-plex-sans ${
+                isDarkMode
+                    ? "bg-gradient-to-b from-zinc-900 via-zinc-800 to-zinc-900 text-cyan-100"
+                    : "bg-gradient-to-b from-blue-100 via-blue-300 to-blue-500 text-zinc-900"
+            }`}
         >
-            <div className="flex justify-between items-center mb-8 max-w-6xl mx-auto">
+            <div className="sticky top-0 z-50 bg-opacity-90 backdrop-blur-md p-6 border-b border-gray-300 dark:border-zinc-700 flex justify-between items-center shadow-sm">
                 <motion.h1
-                    className="text-4xl font-extrabold bg-clip-text text-transparent
-                            bg-gradient-to-r from-[#00bfff] via-[#1e90ff] to-[#005f99]"
+                    className="text-4xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-blue-500 to-blue-800"
                     initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 1 }}
@@ -41,12 +39,11 @@ export default function Home() {
                 </motion.h1>
                 <button
                     onClick={toggleTheme}
-                    className={`p-3 rounded-full shadow-lg hover:scale-110 transition-transform duration-300
-                        ${
-                            isDarkMode
-                                ? "bg-gradient-to-r from-[#00d4ff] to-[#0086cc] text-[#001529]"
-                                : "bg-gradient-to-r from-[#004080] to-[#1e90ff] text-white"
-                        }`}
+                    className={`p-3 rounded-full shadow-md hover:scale-110 transition-transform duration-300 ${
+                        isDarkMode
+                            ? "bg-gradient-to-r from-cyan-400 to-blue-600 text-zinc-900"
+                            : "bg-gradient-to-r from-blue-700 to-cyan-400 text-white"
+                    }`}
                     aria-label="Toggle Theme"
                     title={isDarkMode ? "Light Mode" : "Dark Mode"}
                 >
@@ -58,7 +55,7 @@ export default function Home() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 1 }}
-                className="rounded-lg shadow-xl mx-auto"
+                className="mx-auto max-w-full"
             >
                 <MapView isDarkMode={isDarkMode} />
             </motion.div>
