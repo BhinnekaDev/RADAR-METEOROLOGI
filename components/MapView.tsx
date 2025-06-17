@@ -223,9 +223,10 @@ export default function MapView({ isDarkMode }: { isDarkMode: boolean }) {
                 toggleAirports={toggleAirports}
                 airportWeather={airportWeather}
                 airportLocations={AIRPORT_LOCATIONS}
+                isDarkMode={isDarkMode}
             />
 
-            <main className="flex-grow relative" style={{ height: "100vh" }}>
+            <main className="flex-grow relative h-screen overflow-hidden">
                 {loading && (
                     <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
                         <div className="text-white text-xl">
@@ -233,13 +234,7 @@ export default function MapView({ isDarkMode }: { isDarkMode: boolean }) {
                         </div>
                     </div>
                 )}
-                {error && (
-                    <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-                        <div className="bg-white dark:bg-zinc-800 p-6 rounded-lg text-red-500 dark:text-red-400">
-                            {error}
-                        </div>
-                    </div>
-                )}
+
                 <MapContainer
                     center={[-2.5, 118.0]}
                     zoom={5}
@@ -265,7 +260,6 @@ export default function MapView({ isDarkMode }: { isDarkMode: boolean }) {
                     )}
 
                     <FlightMarkers />
-                    <ZoomControl position="bottomright" />
                 </MapContainer>
             </main>
         </div>

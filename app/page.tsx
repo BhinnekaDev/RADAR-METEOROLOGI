@@ -22,15 +22,16 @@ export default function Home() {
 
     return (
         <div
-            className={`min-h-screen transition-colors duration-700 font-plex-sans ${
+            className={`h-screen flex flex-col overflow-hidden ${
                 isDarkMode
-                    ? "bg-gradient-to-b from-zinc-900 via-zinc-800 to-zinc-900 text-cyan-100"
-                    : "bg-gradient-to-b from-blue-100 via-blue-300 to-blue-500 text-zinc-900"
+                    ? "bg-zinc-900 text-cyan-100"
+                    : "bg-blue-200 text-zinc-900"
             }`}
         >
-            <div className="sticky top-0 z-50 bg-opacity-90 backdrop-blur-md p-6 border-b border-gray-300 dark:border-zinc-700 flex justify-between items-center shadow-sm">
+            {/* HEADER */}
+            <div className="flex-none p-4 border-b border-gray-300 dark:border-zinc-700 flex justify-between items-center">
                 <motion.h1
-                    className="text-4xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-blue-500 to-blue-800"
+                    className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-blue-500 to-blue-800"
                     initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 1 }}
@@ -39,26 +40,22 @@ export default function Home() {
                 </motion.h1>
                 <button
                     onClick={toggleTheme}
-                    className={`p-3 rounded-full shadow-md hover:scale-110 transition-transform duration-300 ${
+                    className={`p-2 rounded-full ${
                         isDarkMode
-                            ? "bg-gradient-to-r from-cyan-400 to-blue-600 text-zinc-900"
-                            : "bg-gradient-to-r from-blue-700 to-cyan-400 text-white"
+                            ? "bg-cyan-500 text-zinc-900"
+                            : "bg-blue-700 text-white"
                     }`}
                     aria-label="Toggle Theme"
                     title={isDarkMode ? "Light Mode" : "Dark Mode"}
                 >
-                    {isDarkMode ? <FaSun size={22} /> : <FaMoon size={22} />}
+                    {isDarkMode ? <FaSun size={18} /> : <FaMoon size={18} />}
                 </button>
             </div>
 
-            <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 1 }}
-                className="mx-auto max-w-full"
-            >
+            {/* MAIN CONTENT - MapView harus tinggi penuh sisanya */}
+            <div className="flex-1 overflow-hidden">
                 <MapView isDarkMode={isDarkMode} />
-            </motion.div>
+            </div>
         </div>
     );
 }

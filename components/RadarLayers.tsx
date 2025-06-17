@@ -14,7 +14,6 @@ export default function RadarLayers({
     activeProducts,
     radarDataMap,
     stormData,
-    radarSites,
 }: RadarLayersProps) {
     const apiKey = process.env.NEXT_PUBLIC_OPENWEATHER_API_KEY;
 
