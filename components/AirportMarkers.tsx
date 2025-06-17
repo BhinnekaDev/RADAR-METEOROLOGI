@@ -24,11 +24,13 @@ const airportIcon = divIcon({
 interface AirportMarkersProps {
     airportLocations: AirportLocation[];
     airportWeather: (WeatherData | null)[];
+    onSelect: (airport: AirportLocation, weather: WeatherData | null) => void;
 }
 
 export default function AirportMarkers({
     airportLocations,
     airportWeather,
+    onSelect,
 }: AirportMarkersProps) {
     return (
         <>
@@ -37,6 +39,11 @@ export default function AirportMarkers({
                     key={airport.code}
                     position={[airport.lat, airport.lon]}
                     icon={airportIcon}
+                    eventHandlers={{
+                        click: () => {
+                            onSelect(airport, airportWeather[index]);
+                        },
+                    }}
                 >
                     <Popup>
                         <div>

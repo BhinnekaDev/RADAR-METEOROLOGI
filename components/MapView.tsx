@@ -5,7 +5,7 @@ import { useState, useEffect, useRef } from "react";
 import RadarControls from "@/components/RadarControls";
 import FlightMarkers from "@/components/FlightMarkers";
 import AirportMarkers from "@/components/AirportMarkers";
-import { MapContainer, TileLayer, ZoomControl } from "react-leaflet";
+import { MapContainer, TileLayer } from "react-leaflet";
 import { RadarProduct, WeatherData, StormData } from "@/components/types";
 
 const BMKG_RADAR_SITES = [
@@ -59,6 +59,12 @@ const AIRPORT_LOCATIONS = [
 ];
 
 export default function MapView({ isDarkMode }: { isDarkMode: boolean }) {
+    const [selectedAirport, setSelectedAirport] = useState<
+        (typeof AIRPORT_LOCATIONS)[number] | null
+    >(null);
+    const [selectedWeather, setSelectedWeather] = useState<WeatherData | null>(
+        null
+    );
     const BMKG_API_KEY = process.env.NEXT_PUBLIC_BMKG_API_KEY ?? "";
     const [activeProducts, setActiveProducts] = useState<RadarProduct[]>([
         "cmax",
@@ -214,6 +220,26 @@ export default function MapView({ isDarkMode }: { isDarkMode: boolean }) {
         fetchAllData();
     }, [BMKG_API_KEY, activeProducts, showAirports]);
 
+    const handleAirportSelect = (
+        airport: (typeof AIRPORT_LOCATIONS)[number]
+    ) => {
+        if (mapRef.current) {
+            const map = mapRef.current;
+            map.flyTo([airport.lat, airport.lon], 12, {
+                duration: 1,
+            });
+        }
+    };
+
+    const zoomToBengkulu = () => {
+        if (mapRef.current) {
+            const map = mapRef.current;
+            map.flyTo([-3.8, 102.25], 9, {
+                duration: 1,
+            });
+        }
+    };
+
     return (
         <div className="flex">
             <RadarControls
@@ -221,9 +247,11 @@ export default function MapView({ isDarkMode }: { isDarkMode: boolean }) {
                 toggleProduct={toggleProduct}
                 showAirports={showAirports}
                 toggleAirports={toggleAirports}
-                airportWeather={airportWeather}
-                airportLocations={AIRPORT_LOCATIONS}
                 isDarkMode={isDarkMode}
+                selectedAirport={selectedAirport}
+                selectedWeather={selectedWeather}
+                onAirportSelect={handleAirportSelect}
+                onZoomToBengkulu={zoomToBengkulu}
             />
 
             <main className="flex-grow relative h-screen overflow-hidden">
@@ -256,6 +284,10 @@ export default function MapView({ isDarkMode }: { isDarkMode: boolean }) {
                         <AirportMarkers
                             airportLocations={AIRPORT_LOCATIONS}
                             airportWeather={airportWeather}
+                            onSelect={(airport, weather) => {
+                                setSelectedAirport(airport);
+                                setSelectedWeather(weather);
+                            }}
                         />
                     )}
 
