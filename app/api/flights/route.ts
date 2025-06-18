@@ -23,9 +23,9 @@ export async function GET() {
             status: "sukses",
             jumlah: data.states?.length || 0,
             data:
-                data.states?.map((pesawat: any) => ({
+                data.states?.map((pesawat: unknown[]) => ({
                     icao24: pesawat[0],
-                    callsign: pesawat[1]?.trim(),
+                    callsign: (pesawat[1] as string)?.trim(),
                     negara_asal: pesawat[2],
                     longitude: pesawat[5],
                     latitude: pesawat[6],
@@ -34,11 +34,12 @@ export async function GET() {
                     arah: pesawat[10],
                 })) || [],
         });
-    } catch (error: any) {
+    } catch (error) {
+        const err = error as Error;
         return NextResponse.json(
             {
                 status: "gagal",
-                pesan: error.message,
+                pesan: err.message,
             },
             { status: 500 }
         );

@@ -6,6 +6,7 @@ import RadarControls from "@/components/RadarControls";
 import FlightMarkers from "@/components/FlightMarkers";
 import AirportMarkers from "@/components/AirportMarkers";
 import { MapContainer, TileLayer } from "react-leaflet";
+import { Map } from "leaflet";
 import { RadarProduct, WeatherData, StormData } from "@/components/types";
 
 const BMKG_RADAR_SITES = [
@@ -70,19 +71,19 @@ export default function MapView({ isDarkMode }: { isDarkMode: boolean }) {
         "cmax",
     ]);
     const [showAirports, setShowAirports] = useState(false);
-    const [radarDataMap, setRadarDataMap] = useState<Record<string, any>>({});
+    const [radarDataMap, setRadarDataMap] = useState<Record<string, unknown>>(
+        {}
+    );
     const [stormData, setStormData] = useState<StormData>({
         ssa: {},
         titan: {},
     });
     const [showTemperature, setShowTemperature] = useState(false);
     const [showVisibility, setShowVisibility] = useState(false);
-    const [temperatureData, setTemperatureData] = useState<any>(null);
-    const [visibilityData, setVisibilityData] = useState<any>(null);
     const [airportWeather, setAirportWeather] = useState<
         (WeatherData | null)[]
     >([]);
-    const mapRef = useRef<any>(null);
+    const mapRef = useRef<Map | null>(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
 
@@ -198,7 +199,7 @@ export default function MapView({ isDarkMode }: { isDarkMode: boolean }) {
                 const results = await Promise.all(allPromises);
 
                 // Process radar and storm data
-                const newRadarData: Record<string, any> = {};
+                const newRadarData: Record<string, unknown> = {};
                 const newStormData: StormData = { ssa: {}, titan: {} };
 
                 results.forEach((result) => {

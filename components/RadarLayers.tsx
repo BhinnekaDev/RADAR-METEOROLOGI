@@ -2,6 +2,63 @@
 import L from "leaflet";
 import { ImageOverlay, TileLayer, GeoJSON } from "react-leaflet";
 import { RadarProduct, RadarSite, StormData } from "@/components/types";
+type Geometry =
+    | Point
+    | LineString
+    | Polygon
+    | MultiPoint
+    | MultiLineString
+    | MultiPolygon
+    | GeometryCollection;
+
+interface Point {
+    type: "Point";
+    coordinates: number[];
+}
+
+interface LineString {
+    type: "LineString";
+    coordinates: number[][];
+}
+
+interface Polygon {
+    type: "Polygon";
+    coordinates: number[][][];
+}
+
+interface MultiPoint {
+    type: "MultiPoint";
+    coordinates: number[][];
+}
+
+interface MultiLineString {
+    type: "MultiLineString";
+    coordinates: number[][][];
+}
+
+interface MultiPolygon {
+    type: "MultiPolygon";
+    coordinates: number[][][][];
+}
+
+interface GeometryCollection {
+    type: "GeometryCollection";
+    geometries: Geometry[];
+}
+
+interface GeoJSONFeature {
+    type: "Feature";
+    geometry: Geometry;
+    properties?: {
+        description?: string;
+        [key: string]: any;
+    };
+}
+
+interface GeoJSONData {
+    type: "FeatureCollection";
+    features: GeoJSONFeature[];
+}
 
 interface RadarLayersProps {
     activeProducts: RadarProduct[];
@@ -14,28 +71,26 @@ export default function RadarLayers({
     activeProducts,
     radarDataMap,
     stormData,
+    radarSites,
 }: RadarLayersProps) {
     const apiKey = process.env.NEXT_PUBLIC_OPENWEATHER_API_KEY;
 
-    const isValidGeoJSON = (data: any): boolean => {
-        if (!data) return false;
-        try {
-            return (
-                data.type === "FeatureCollection" &&
-                Array.isArray(data.features) &&
-                data.features.every(
-                    (feature: any) =>
-                        feature.type === "Feature" &&
-                        feature.geometry &&
-                        feature.geometry.type
-                )
-            );
-        } catch {
-            return false;
-        }
+    const isValidGeoJSON = (data: unknown): data is GeoJSONData => {
+        if (!data || typeof data !== "object") return false;
+        const geoJson = data as GeoJSONData;
+        return (
+            geoJson.type === "FeatureCollection" &&
+            Array.isArray(geoJson.features) &&
+            geoJson.features.every(
+                (feature) =>
+                    feature.type === "Feature" &&
+                    feature.geometry &&
+                    feature.geometry.type
+            )
+        );
     };
 
-    const styleTITAN = (feature: any) => {
+    const styleTITAN = (feature?: GeoJSONFeature) => {
         if (!feature?.properties) return { color: "#000000" };
 
         switch (feature.properties.description) {
