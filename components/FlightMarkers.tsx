@@ -1,10 +1,9 @@
 "use client";
 
+import { divIcon } from "leaflet";
 import { useEffect, useState } from "react";
 import { Marker, Popup } from "react-leaflet";
-import { divIcon } from "leaflet";
 
-// Tipe data sesuai dari API
 type FlightState = {
     icao24: string;
     callsign: string;
@@ -16,7 +15,6 @@ type FlightState = {
     arah?: number | null;
 };
 
-// Ikon pesawat ✈️
 const planeIcon = (arah: number = 0) =>
     divIcon({
         html: `
@@ -33,7 +31,6 @@ const planeIcon = (arah: number = 0) =>
         iconAnchor: [12, 12],
     });
 
-// Fungsi bantu untuk format angka
 const formatAngka = (value: number | null | undefined) =>
     value != null ? value.toFixed(0) : "-";
 
@@ -58,7 +55,6 @@ export default function FlightMarkers() {
 
         ambilData();
 
-        // Refresh data tiap 30 detik
         const interval = setInterval(ambilData, 30000);
         return () => clearInterval(interval);
     }, []);

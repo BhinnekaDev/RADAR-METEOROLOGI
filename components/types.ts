@@ -8,6 +8,7 @@ export type WeatherData = {
         feels_like: ReactNode;
         temp: number;
         humidity: number;
+        pressure: number;
     };
     wind: {
         deg: ReactNode;

@@ -6,6 +6,8 @@ import RadarControls from "@/components/RadarControls";
 import FlightMarkers from "@/components/FlightMarkers";
 import AirportMarkers from "@/components/AirportMarkers";
 import { MapContainer, TileLayer } from "react-leaflet";
+import VisibilityLayer from "@/components/VisibilityLayer";
+import TemperatureLayer from "@/components/TemperatureLayer";
 import { RadarProduct, WeatherData, StormData } from "@/components/types";
 
 const BMKG_RADAR_SITES = [
@@ -75,6 +77,10 @@ export default function MapView({ isDarkMode }: { isDarkMode: boolean }) {
         ssa: {},
         titan: {},
     });
+    const [showTemperature, setShowTemperature] = useState(false);
+    const [showVisibility, setShowVisibility] = useState(false);
+    const [temperatureData, setTemperatureData] = useState<any>(null);
+    const [visibilityData, setVisibilityData] = useState<any>(null);
     const [airportWeather, setAirportWeather] = useState<
         (WeatherData | null)[]
     >([]);
@@ -100,6 +106,14 @@ export default function MapView({ isDarkMode }: { isDarkMode: boolean }) {
 
     const toggleAirports = () => {
         setShowAirports(!showAirports);
+    };
+
+    const toggleTemperature = () => {
+        setShowTemperature((prev) => !prev);
+    };
+
+    const toggleVisibility = () => {
+        setShowVisibility((prev) => !prev);
     };
 
     useEffect(() => {
@@ -199,10 +213,8 @@ export default function MapView({ isDarkMode }: { isDarkMode: boolean }) {
                             ] = result.data;
                         }
                     } else if ("weather" in result) {
-                        // This is weather data
                         setAirportWeather((prev) => [...prev, result]);
                     } else if ("siteId" in result) {
-                        // This is radar data
                         newRadarData[result.siteId] = result.data;
                     }
                 });
@@ -252,6 +264,10 @@ export default function MapView({ isDarkMode }: { isDarkMode: boolean }) {
                 selectedWeather={selectedWeather}
                 onAirportSelect={handleAirportSelect}
                 onZoomToBengkulu={zoomToBengkulu}
+                showTemperature={showTemperature}
+                toggleTemperature={toggleTemperature}
+                showVisibility={showVisibility}
+                toggleVisibility={toggleVisibility}
             />
 
             <main className="flex-grow relative h-screen overflow-hidden">
@@ -279,6 +295,23 @@ export default function MapView({ isDarkMode }: { isDarkMode: boolean }) {
                         stormData={stormData}
                         radarSites={BMKG_RADAR_SITES}
                     />
+
+                    {showTemperature && (
+                        <TileLayer
+                            url={`https://tile.openweathermap.org/map/temp_new/{z}/{x}/{y}.png?appid=${process.env.NEXT_PUBLIC_OPENWEATHER_API_KEY}`}
+                            attribution='&copy; <a href="https://openweathermap.org/">OpenWeatherMap</a>'
+                            opacity={0.5}
+                            zIndex={99}
+                        />
+                    )}
+
+                    {showVisibility && (
+                        <TileLayer
+                            url={`https://tile.openweathermap.org/map/clouds_new/{z}/{x}/{y}.png?appid=${process.env.NEXT_PUBLIC_OPENWEATHER_API_KEY}`}
+                            opacity={0.5}
+                            zIndex={98}
+                        />
+                    )}
 
                     {showAirports && (
                         <AirportMarkers

@@ -1,12 +1,11 @@
-// app/api/pesawat/route.ts
 import { NextResponse } from "next/server";
 
 export async function GET() {
     try {
-        const lamin = -12; // batas selatan diperlebar
-        const lamax = 7; // batas utara diperlebar
-        const lomin = 94; // batas barat diperlebar
-        const lomax = 142; // batas timur diperlebar
+        const lamin = -12;
+        const lamax = 7;
+        const lomin = 94;
+        const lomax = 142;
 
         const url = `https://opensky-network.org/api/states/all?lamin=${lamin}&lomin=${lomin}&lamax=${lamax}&lomax=${lomax}`;
         const res = await fetch(url);

@@ -52,7 +52,6 @@ export default function RadarLayers({
 
     return (
         <>
-            {/* CMAX Radar Images */}
             {Object.entries(radarDataMap).map(([siteId, data]) => {
                 if (
                     !data?.Latest?.file ||
@@ -75,7 +74,6 @@ export default function RadarLayers({
                 ) : null;
             })}
 
-            {/* SSA GeoJSON */}
             {activeProducts.includes("ssa") &&
                 Object.entries(stormData.ssa).map(([siteId, data]) => {
                     if (!isValidGeoJSON(data)) return null;
@@ -93,7 +91,6 @@ export default function RadarLayers({
                     );
                 })}
 
-            {/* TITAN GeoJSON */}
             {activeProducts.includes("titan") &&
                 Object.entries(stormData.titan).map(([siteId, data]) => {
                     if (!isValidGeoJSON(data)) return null;

@@ -13,10 +13,18 @@ interface RadarControlsProps {
     selectedWeather: WeatherData | null;
     onAirportSelect: (airport: AirportLocation) => void;
     onZoomToBengkulu: () => void;
+    showTemperature: boolean;
+    toggleTemperature: () => void;
+    showVisibility: boolean;
+    toggleVisibility: () => void;
 }
 
 const convertToKnots = (ms: number) => {
     return (ms * 1.94384).toFixed(1);
+};
+
+const metersToKilometers = (meters: number) => {
+    return (meters / 1000).toFixed(1);
 };
 
 export default function RadarControls({
@@ -29,6 +37,10 @@ export default function RadarControls({
     selectedWeather,
     onAirportSelect,
     onZoomToBengkulu,
+    showTemperature,
+    toggleTemperature,
+    showVisibility,
+    toggleVisibility,
 }: RadarControlsProps) {
     return (
         <aside
@@ -51,7 +63,7 @@ export default function RadarControls({
                                 onChange={() => toggleProduct(product)}
                                 label={
                                     product === "cmax"
-                                        ? "Radar CMAX (Curah Hujan)"
+                                        ? "Radar CMAX"
                                         : product === "ssa"
                                         ? "Analisis Badai (SSA)"
                                         : "Prediksi Badai (TITAN)"
@@ -67,25 +79,36 @@ export default function RadarControls({
                     <FancyToggleSwitch
                         enabled={activeProducts.includes("rain")}
                         onChange={() => toggleProduct("rain")}
-                        label="Radar Hujan (OpenWeatherMap)"
+                        label="Radar Hujan"
                         isDarkMode={isDarkMode}
                     />
                     <FancyToggleSwitch
                         enabled={activeProducts.includes("wind")}
                         onChange={() => toggleProduct("wind")}
-                        label="Radar Angin (OpenWeatherMap)"
+                        label="Radar Angin"
                         isDarkMode={isDarkMode}
                     />
                     <FancyToggleSwitch
                         enabled={showAirports}
                         onChange={toggleAirports}
-                        label="Tampilkan Bandara & Cuaca"
+                        label="Tampilkan Bandara"
+                        isDarkMode={isDarkMode}
+                    />
+                    <FancyToggleSwitch
+                        enabled={showTemperature}
+                        onChange={toggleTemperature}
+                        label="Layer Suhu"
+                        isDarkMode={isDarkMode}
+                    />
+                    <FancyToggleSwitch
+                        enabled={showVisibility}
+                        onChange={toggleVisibility}
+                        label="Layer Jarak Pandang"
                         isDarkMode={isDarkMode}
                     />
                 </div>
             </div>
 
-            {/* Scrollable content area */}
             <div
                 className={`flex-1 overflow-y-auto pr-2 ${
                     isDarkMode ? "scrollbar-dark" : "scrollbar-light"
@@ -134,6 +157,33 @@ export default function RadarControls({
                                             selectedWeather.wind.speed
                                         )}{" "}
                                         knot ({selectedWeather.wind.deg}°)
+                                    </span>
+                                </div>
+                                <div className="flex justify-between">
+                                    <span className="text-gray-500">
+                                        Jarak Pandang:
+                                    </span>
+                                    <span className="font-medium">
+                                        {metersToKilometers(
+                                            selectedWeather.visibility
+                                        )}{" "}
+                                        km
+                                    </span>
+                                </div>
+                                <div className="flex justify-between">
+                                    <span className="text-gray-500">
+                                        Tekanan:
+                                    </span>
+                                    <span className="font-medium">
+                                        {selectedWeather.main.pressure} hPa
+                                    </span>
+                                </div>
+                                <div className="flex justify-between">
+                                    <span className="text-gray-500">
+                                        Kondisi:
+                                    </span>
+                                    <span className="font-medium capitalize">
+                                        {selectedWeather.weather[0].description}
                                     </span>
                                 </div>
                             </div>
@@ -198,6 +248,32 @@ export default function RadarControls({
                                 </p>
                             </div>
                         </li>
+
+                        {showTemperature && (
+                            <li className="flex items-center gap-3">
+                                <div className="w-5 h-5 rounded-full bg-gradient-to-r from-blue-500 to-red-500 shadow-md"></div>
+                                <div>
+                                    <p className="font-medium">Suhu</p>
+                                    <p className="text-xs text-gray-500">
+                                        Warna biru untuk suhu dingin, merah
+                                        untuk suhu panas.
+                                    </p>
+                                </div>
+                            </li>
+                        )}
+
+                        {showVisibility && (
+                            <li className="flex items-center gap-3">
+                                <div className="w-5 h-5 rounded-full bg-gradient-to-r from-green-500 to-gray-500 shadow-md"></div>
+                                <div>
+                                    <p className="font-medium">Jarak Pandang</p>
+                                    <p className="text-xs text-gray-500">
+                                        Hijau untuk jarak pandang baik, abu-abu
+                                        untuk jarak pandang terbatas.
+                                    </p>
+                                </div>
+                            </li>
+                        )}
 
                         <li className="flex items-center gap-3">
                             <div className="w-5 h-5 rounded-full bg-green-500 shadow-md"></div>

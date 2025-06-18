@@ -11,8 +11,10 @@
   "dependencies": {
     "@headlessui/react": "^2.2.4",
     "@heroicons/react": "^2.2.0",
+    "@types/leaflet.heat": "^0.2.4",
     "framer-motion": "^12.14.0",
     "leaflet": "^1.9.4",
+    "leaflet.heat": "^0.2.0",
     "next": "^15.3.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",

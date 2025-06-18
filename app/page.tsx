@@ -28,7 +28,6 @@ export default function Home() {
                     : "bg-blue-200 text-zinc-900"
             }`}
         >
-            {/* HEADER */}
             <div className="flex-none p-4 border-b border-gray-300 dark:border-zinc-700 flex justify-between items-center">
                 <motion.h1
                     className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-blue-500 to-blue-800"
@@ -38,6 +37,7 @@ export default function Home() {
                 >
                     Met Flight Radar
                 </motion.h1>
+
                 <button
                     onClick={toggleTheme}
                     className={`p-2 rounded-full ${
@@ -52,7 +52,6 @@ export default function Home() {
                 </button>
             </div>
 
-            {/* MAIN CONTENT - MapView harus tinggi penuh sisanya */}
             <div className="flex-1 overflow-hidden">
                 <MapView isDarkMode={isDarkMode} />
             </div>

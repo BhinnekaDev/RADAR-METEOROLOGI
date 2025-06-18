@@ -3,9 +3,8 @@ import { divIcon } from "leaflet";
 import { Marker, Popup } from "react-leaflet";
 import { AirportLocation, WeatherData } from "@/components/types";
 
-// Conversion function from m/s to knots
 const msToKnots = (ms: number) => {
-    return (ms * 1.94384).toFixed(1); // 1 m/s = 1.94384 knots
+    return (ms * 1.94384).toFixed(1);
 };
 
 const airportIcon = divIcon({

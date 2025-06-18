@@ -15,8 +15,8 @@ const plexMono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-    title: "Radar Meteorologi",
-    description: "Radar Meteorologi",
+    title: "Met Flight Radar",
+    description: "Met Flight Radar",
 };
 
 export default function RootLayout({

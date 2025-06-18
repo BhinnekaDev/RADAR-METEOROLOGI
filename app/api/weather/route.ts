@@ -6,7 +6,6 @@ export async function GET(request: NextRequest) {
     try {
         const apiKey = apiKey2;
 
-        // Ambil query params lat dan lon
         const { searchParams } = new URL(request.url);
         const lat = searchParams.get("lat");
         const lon = searchParams.get("lon");
