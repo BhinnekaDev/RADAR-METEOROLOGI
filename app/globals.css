@@ -3,19 +3,154 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+    --background: #ffffff;
+    --foreground: #171717;
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+    :root {
+        --background: #0a0a0a;
+        --foreground: #ededed;
+    }
+}
+
+.scrollbar-light::-webkit-scrollbar {
+    width: 8px;
+}
+.scrollbar-light::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+.scrollbar-light::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 10px;
+}
+.scrollbar-light::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
+.scrollbar-dark::-webkit-scrollbar {
+    width: 8px;
+}
+.scrollbar-dark::-webkit-scrollbar-track {
+    background: #1e293b;
+    border-radius: 10px;
+}
+.scrollbar-dark::-webkit-scrollbar-thumb {
+    background: #475569;
+    border-radius: 10px;
+}
+.scrollbar-dark::-webkit-scrollbar-thumb:hover {
+    background: #64748b;
+}
+
+.radar-icon {
+    position: relative;
+    width: 64px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.radar-effect {
+    position: absolute;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    opacity: 0.4;
+    animation: radar-pulse 2s infinite;
+}
+
+.radar-effect.green {
+    background: rgba(0, 255, 0, 0.4);
+    animation-delay: 0s;
+}
+
+.radar-effect.yellow {
+    background: rgba(255, 255, 0, 0.3);
+    animation-delay: 0.5s;
+}
+
+.radar-effect.red {
+    background: rgba(255, 0, 0, 0.2);
+    animation-delay: 1s;
+}
+
+@keyframes radar-pulse {
+    0% {
+        transform: scale(0.8);
+        opacity: 0.4;
+    }
+    70% {
+        transform: scale(1.5);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1.5);
+        opacity: 0;
+    }
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+    color: var(--foreground);
+    background: var(--background);
+    font-family: Arial, Helvetica, sans-serif;
+}
+.radar-icon {
+    position: relative;
+    width: 64px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.radar-icon img {
+    width: 48px; /* ukuran icon cuaca */
+    height: 48px;
+    z-index: 2;
+    position: relative;
+}
+
+/* Efek radar pulse di belakang ikon cuaca */
+.radar-effect {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    opacity: 0.4;
+    animation: radar-pulse 2s infinite;
+    z-index: 1;
+}
+
+.radar-effect.green {
+    background: rgba(0, 255, 0, 0.4);
+    animation-delay: 0s;
+}
+
+.radar-effect.yellow {
+    background: rgba(255, 255, 0, 0.3);
+    animation-delay: 0.5s;
+}
+
+.radar-effect.red {
+    background: rgba(255, 0, 0, 0.2);
+    animation-delay: 1s;
+}
+
+@keyframes radar-pulse {
+    0% {
+        transform: scale(0.8);
+        opacity: 0.4;
+    }
+    70% {
+        transform: scale(1.5);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1.5);
+        opacity: 0;
+    }
 }
