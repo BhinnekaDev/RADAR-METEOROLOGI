@@ -6,8 +6,6 @@ import RadarControls from "@/components/RadarControls";
 import FlightMarkers from "@/components/FlightMarkers";
 import AirportMarkers from "@/components/AirportMarkers";
 import { MapContainer, TileLayer } from "react-leaflet";
-import VisibilityLayer from "@/components/VisibilityLayer";
-import TemperatureLayer from "@/components/TemperatureLayer";
 import { RadarProduct, WeatherData, StormData } from "@/components/types";
 
 const BMKG_RADAR_SITES = [
