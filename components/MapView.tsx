@@ -134,7 +134,6 @@ export default function MapView({ isDarkMode }: { isDarkMode: boolean }) {
                     return { siteId: site.id, data: await res.json() };
                 });
 
-                // Fetch storm data if needed
                 const stormPromises = [];
                 if (
                     activeProducts.includes("ssa") ||
@@ -176,7 +175,6 @@ export default function MapView({ isDarkMode }: { isDarkMode: boolean }) {
                     }
                 }
 
-                // Fetch airport weather if needed
                 const weatherPromises = showAirports
                     ? AIRPORT_LOCATIONS.map((loc) =>
                           fetch(`/api/weather?lat=${loc.lat}&lon=${loc.lon}`)
@@ -198,7 +196,6 @@ export default function MapView({ isDarkMode }: { isDarkMode: boolean }) {
                 ];
                 const results = await Promise.all(allPromises);
 
-                // Process radar and storm data
                 const newRadarData: Record<string, unknown> = {};
                 const newStormData: StormData = { ssa: {}, titan: {} };
 
