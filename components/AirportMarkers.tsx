@@ -9,15 +9,15 @@ const msToKnots = (ms: number) => {
 
 const airportIcon = divIcon({
     html: `
-        <div class="airport-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#cbdb1a" width="24px" height="24px">
-                <path d="M22 16v-2l-8.5-5V3.5c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5V9L2 14v2l8.5-2.5V19L8 20.5V22l4-1 4 1v-1.5L13.5 19v-5.5L22 16z"/>
-            </svg>
-        </div>
-    `,
+    <div class="airport-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" width="28" height="28" fill="#0ea5e9">
+        <path d="M480 192H365.7L260.5 8.6C257 2.6 250.2 0 243.6 0H224c-9.5 0-17.2 7.7-17.2 17.2 0 1.3.2 2.6.5 3.9l49.8 170.9H144L95.2 113.1c-4.4-5.9-11.3-9.4-18.7-9.4H48C39.2 103.7 32 111 32 119.7c0 3.7 1.2 7.3 3.4 10.3l52.5 70.3H64c-35.3 0-64 28.7-64 64v48c0 8.8 7.2 16 16 16h80l64 48v40c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16v-40l64-48h80l128 48h80c8.8 0 16-7.2 16-16v-64c0-53-43-96-96-96z"/>
+      </svg>
+    </div>
+  `,
     className: "",
-    iconSize: [24, 24],
-    iconAnchor: [12, 12],
+    iconSize: [28, 28],
+    iconAnchor: [14, 14],
 });
 
 interface AirportMarkersProps {

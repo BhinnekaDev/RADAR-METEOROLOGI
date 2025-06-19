@@ -46,17 +46,226 @@ const BMKG_RADAR_SITES = [
 
 const AIRPORT_LOCATIONS = [
     {
-        name: "Bandara Fatmawati Bengkulu",
-        code: "BKS",
-        lat: -3.7904,
-        lon: 102.32,
+        name: "Soekarno–Hatta International Airport",
+        code: "CGK",
+        lat: -6.125567,
+        lon: 106.655897,
     },
     {
-        name: "Bandara Soekarno-Hatta",
-        code: "CGK",
-        lat: -6.1256,
-        lon: 106.6559,
+        name: "Halim Perdanakusuma International Airport",
+        code: "HLP",
+        lat: -6.266611,
+        lon: 106.891998,
     },
+    {
+        name: "Juanda International Airport",
+        code: "SUB",
+        lat: -7.379829,
+        lon: 112.787278,
+    },
+    {
+        name: "Ngurah Rai (Bali) International Airport",
+        code: "DPS",
+        lat: -8.748169,
+        lon: 115.167172,
+    },
+    {
+        name: "Kualanamu International Airport",
+        code: "KNO",
+        lat: 3.642222,
+        lon: 98.885278,
+    },
+    {
+        name: "Sultan Hasanuddin International Airport",
+        code: "UPG",
+        lat: -5.061631,
+        lon: 119.554042,
+    },
+    {
+        name: "Sultan Aji Muhammad Sulaiman Sepinggan Airport",
+        code: "BPN",
+        lat: -1.265389,
+        lon: 116.897219,
+    },
+    {
+        name: "Supadio International Airport",
+        code: "PNK",
+        lat: -0.150711,
+        lon: 109.403892,
+    },
+    {
+        name: "Sultan Mahmud Badaruddin II Airport",
+        code: "PLM",
+        lat: -2.900833,
+        lon: 104.700833,
+    },
+    {
+        name: "Sultan Syarif Kasim II International Airport",
+        code: "PKU",
+        lat: 0.460786,
+        lon: 101.444267,
+    },
+    {
+        name: "Hang Nadim International Airport",
+        code: "BTH",
+        lat: 1.121028,
+        lon: 104.119139,
+    },
+    {
+        name: "Minangkabau International Airport",
+        code: "PDG",
+        lat: -0.786111,
+        lon: 100.280556,
+    },
+    {
+        name: "Sam Ratulangi International Airport",
+        code: "MDC",
+        lat: 1.549264,
+        lon: 124.925822,
+    },
+    {
+        name: "Adisucipto International Airport",
+        code: "JOG",
+        lat: -7.788181,
+        lon: 110.431758,
+    },
+    {
+        name: "Yogyakarta International Airport",
+        code: "YIA",
+        lat: -7.905444,
+        lon: 110.061389,
+    },
+    {
+        name: "Adi Soemarmo International Airport",
+        code: "SOC",
+        lat: -7.516089,
+        lon: 110.756339,
+    },
+    {
+        name: "Achmad Yani International Airport",
+        code: "SRG",
+        lat: -6.972739,
+        lon: 110.375008,
+    },
+    {
+        name: "Husein Sastranegara International Airport",
+        code: "BDO",
+        lat: -6.900625,
+        lon: 107.576294,
+    },
+    {
+        name: "Lombok International Airport",
+        code: "LOP",
+        lat: -8.757317,
+        lon: 116.276677,
+    },
+    { name: "El Tari Airport", code: "KOE", lat: -10.171667, lon: 123.671944 },
+    {
+        name: "Frans Kaisiepo Airport",
+        code: "BIK",
+        lat: -1.190017,
+        lon: 136.107389,
+    },
+    {
+        name: "Sentani International Airport",
+        code: "DJJ",
+        lat: -2.576953,
+        lon: 140.516372,
+    },
+    {
+        name: "Domine Eduard Osok Airport",
+        code: "SOQ",
+        lat: -0.926417,
+        lon: 131.121194,
+    },
+    {
+        name: "Tjilik Riwut Airport",
+        code: "PKY",
+        lat: -2.225128,
+        lon: 113.942661,
+    },
+    {
+        name: "Juwata International Airport",
+        code: "TRK",
+        lat: 3.326694,
+        lon: 117.565197,
+    },
+    {
+        name: "Sultan Thaha Airport",
+        code: "DJB",
+        lat: -1.638025,
+        lon: 103.645789,
+    },
+    {
+        name: "Syamsudin Noor International Airport",
+        code: "BDJ",
+        lat: -3.442356,
+        lon: 114.763317,
+    },
+    {
+        name: "Fatmawati Soekarno Airport",
+        code: "BKS",
+        lat: -3.8637,
+        lon: 102.3396,
+    },
+    {
+        name: "Malikus Saleh Airport",
+        code: "LSW",
+        lat: 5.226667,
+        lon: 97.185278,
+    },
+    { name: "Cut Nyak Dhien Airport", code: "MEQ", lat: 4.25, lon: 96.217 },
+    {
+        name: "Maimun Saleh Airport",
+        code: "SBG",
+        lat: 5.873611,
+        lon: 95.339722,
+    },
+    { name: "Depati Amir Airport", code: "PGK", lat: -2.1622, lon: 106.1389 },
+    { name: "Depati Parbo Airport", code: "KRC", lat: -2.2425, lon: 101.1203 },
+    { name: "Muara Bungo Airport", code: "BUU", lat: -1.121, lon: 102.136 },
+    {
+        name: "Kijang Airport (Raja Haji Fisabilillah)",
+        code: "TNJ",
+        lat: 0.922,
+        lon: 104.531,
+    },
+    {
+        name: "Radin Inten II Airport",
+        code: "TKG",
+        lat: -5.242339,
+        lon: 105.178156,
+    },
+    {
+        name: "Tunggul Wulung Airport",
+        code: "CXP",
+        lat: -7.645056,
+        lon: 109.033778,
+    },
+    { name: "Notohadinegoro Airport", code: "JBB", lat: -8.539, lon: 114.151 },
+    {
+        name: "Nop Goliat Dekai Airport",
+        code: "DEX",
+        lat: -4.859444,
+        lon: 139.482778,
+    },
+    { name: "Tanah Merah Airport", code: "TMH", lat: -6.101, lon: 140.3 },
+    {
+        name: "Mozes Kilangin Airport",
+        code: "TIM",
+        lat: -4.528278,
+        lon: 136.887372,
+    },
+    { name: "Wamena Airport", code: "WMX", lat: -4.089583, lon: 138.955278 },
+    { name: "Babo Airport", code: "BXB", lat: -2.533, lon: 133.417 },
+    {
+        name: "Domine Eduard Osok Airport",
+        code: "SOQ",
+        lat: -0.926389,
+        lon: 131.121667,
+    },
+    { name: "Rendani Airport", code: "MKW", lat: -0.891833, lon: 134.048531 },
+    { name: "Siboru Airport", code: "SBV", lat: -2.532361, lon: 133.401 },
 ];
 
 export default function MapView({ isDarkMode }: { isDarkMode: boolean }) {
@@ -126,7 +335,6 @@ export default function MapView({ isDarkMode }: { isDarkMode: boolean }) {
             setError(null);
 
             try {
-                // Fetch radar data
                 const radarPromises = BMKG_RADAR_SITES.map(async (site) => {
                     const url = `https://radar.bmkg.go.id:8090/sidarmaimage?token=${BMKG_API_KEY}&radar=${site.id}`;
                     const res = await fetch(url);
