@@ -68,7 +68,7 @@ Buka [http://localhost:3000](http://localhost:3000) di browser Anda.
 
 ## 📸 Screenshot
 
-![Tampilan Dashboard](https://github.com/user-attachments/assets/59640211-19ba-4091-85d6-917ad009b430)
+![Tampilan Dashboard](https://github.com/user-attachments/assets/5bcc7e37-6988-41ed-a969-c2d15c197b78)
 *Tampilan utama dengan radar CMAX aktif*
 
 ## 🤝 Berkontribusi
