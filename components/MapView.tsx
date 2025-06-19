@@ -8,6 +8,7 @@ import AirportMarkers from "@/components/AirportMarkers";
 import { MapContainer, TileLayer } from "react-leaflet";
 import { Map } from "leaflet";
 import { RadarProduct, WeatherData, StormData } from "@/components/types";
+import { FaBars } from "react-icons/fa";
 
 const BMKG_RADAR_SITES = [
     { id: "BTH", name: "Batam", lat: 1.121, lon: 104.007 },
@@ -268,7 +269,19 @@ const AIRPORT_LOCATIONS = [
     { name: "Siboru Airport", code: "SBV", lat: -2.532361, lon: 133.401 },
 ];
 
-export default function MapView({ isDarkMode }: { isDarkMode: boolean }) {
+interface MapViewProps {
+    isDarkMode: boolean;
+    isMobile: boolean;
+    showSidebar: boolean;
+    toggleSidebar: () => void;
+}
+
+export default function MapView({
+    isDarkMode,
+    isMobile,
+    showSidebar,
+    toggleSidebar,
+}: MapViewProps) {
     const [selectedAirport, setSelectedAirport] = useState<
         (typeof AIRPORT_LOCATIONS)[number] | null
     >(null);
@@ -458,23 +471,39 @@ export default function MapView({ isDarkMode }: { isDarkMode: boolean }) {
 
     return (
         <div className="flex">
-            <RadarControls
-                activeProducts={activeProducts}
-                toggleProduct={toggleProduct}
-                showAirports={showAirports}
-                toggleAirports={toggleAirports}
-                isDarkMode={isDarkMode}
-                selectedAirport={selectedAirport}
-                selectedWeather={selectedWeather}
-                onAirportSelect={handleAirportSelect}
-                onZoomToBengkulu={zoomToBengkulu}
-                showTemperature={showTemperature}
-                toggleTemperature={toggleTemperature}
-                showVisibility={showVisibility}
-                toggleVisibility={toggleVisibility}
-            />
+            {(!isMobile || showSidebar) && (
+                <RadarControls
+                    activeProducts={activeProducts}
+                    toggleProduct={toggleProduct}
+                    showAirports={showAirports}
+                    toggleAirports={toggleAirports}
+                    isDarkMode={isDarkMode}
+                    selectedAirport={selectedAirport}
+                    selectedWeather={selectedWeather}
+                    onAirportSelect={handleAirportSelect}
+                    onZoomToBengkulu={zoomToBengkulu}
+                    showTemperature={showTemperature}
+                    toggleTemperature={toggleTemperature}
+                    showVisibility={showVisibility}
+                    toggleVisibility={toggleVisibility}
+                    isMobile={isMobile}
+                    toggleSidebar={toggleSidebar}
+                />
+            )}
 
             <main className="flex-grow relative h-screen overflow-hidden">
+                {isMobile && !showSidebar && (
+                    <button
+                        onClick={toggleSidebar}
+                        className={`absolute top-4 left-4 z-[1000] p-2 rounded-full ${
+                            isDarkMode ? "bg-zinc-700" : "bg-white"
+                        } shadow-lg`}
+                        aria-label="Show controls"
+                    >
+                        <FaBars size={18} />
+                    </button>
+                )}
+
                 {loading && (
                     <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
                         <div className="text-white text-xl">

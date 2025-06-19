@@ -17,6 +17,8 @@ interface RadarControlsProps {
     toggleTemperature: () => void;
     showVisibility: boolean;
     toggleVisibility: () => void;
+    isMobile?: boolean;
+    toggleSidebar?: () => void;
 }
 
 const convertToKnots = (ms: number) => {
@@ -41,15 +43,33 @@ export default function RadarControls({
     toggleTemperature,
     showVisibility,
     toggleVisibility,
+    isMobile = false,
+    toggleSidebar = () => {},
 }: RadarControlsProps) {
     return (
         <aside
-            className={`w-80 h-screen flex flex-col border-r p-6 pb-28 space-y-4 shadow-xl ${
+            className={`${
+                isMobile
+                    ? "fixed inset-0 z-[999] w-full h-full overflow-y-auto"
+                    : "w-80 h-screen flex flex-col border-r p-6 pb-28 space-y-4 shadow-xl"
+            }
+            flex flex-col border-r p-6 pb-28 space-y-4 shadow-xl ${
                 isDarkMode
                     ? "bg-zinc-900 border-zinc-700 text-cyan-100"
                     : "bg-white border-gray-300 text-zinc-900"
             }`}
         >
+            {isMobile && (
+                <div className="flex justify-between items-center mb-4">
+                    <h2 className="text-xl font-semibold">Met Flight Radar</h2>
+                    <button
+                        onClick={toggleSidebar}
+                        className="p-2 rounded-full hover:bg-opacity-20 hover:bg-gray-500"
+                    >
+                        ✕
+                    </button>
+                </div>
+            )}
             <div className="flex-none">
                 <h2 className="text-xl font-semibold mb-4">Layer Radar</h2>
 
