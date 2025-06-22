@@ -9,6 +9,7 @@ import { MapContainer, TileLayer } from "react-leaflet";
 import { Map } from "leaflet";
 import { RadarProduct, WeatherData, StormData } from "@/components/types";
 import { FaBars } from "react-icons/fa";
+import { Footer } from "./Footer";
 
 const BMKG_RADAR_SITES = [
     { id: "BTH", name: "Batam", lat: 1.121, lon: 104.007 },
@@ -517,7 +518,7 @@ export default function MapView({
                     zoom={5}
                     zoomControl={false}
                     scrollWheelZoom={true}
-                    style={{ height: "100%", width: "100%" }}
+                    style={{ height: "85%", width: "100%" }}
                     ref={mapRef}
                 >
                     <TileLayer attribution={attribution} url={tileLayerUrl} />
@@ -559,6 +560,8 @@ export default function MapView({
 
                     <FlightMarkers />
                 </MapContainer>
+
+                <Footer isDarkMode={isDarkMode} />
             </main>
         </div>
     );
