@@ -124,4 +124,4 @@ MIT © 2025 [Bhinneka Dev](https://github.com/BhinnekaDev)
   <img alt="Cuplikan Dashboard" src="https://github.com/user-attachments/assets/5bcc7e37-6988-41ed-a969-c2d15c197b78" width="80%" />
 </p>
 
-<p align="center"><sub>“Weather is what you face, **radar** is how you see it.”</sub></p>
+<p align="center"><sub>Bhinneka Developer © 2025</sub></p>
