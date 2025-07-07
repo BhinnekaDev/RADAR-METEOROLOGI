@@ -70,7 +70,7 @@ export default function RadarControls({
             <div
                 className={`${
                     isMobile
-                        ? "w-full max-w-md mx-auto h-full flex flex-col bg-white dark:bg-zinc-900 shadow-xl"
+                        ? "w-full max-w-md mx-auto h-full flex flex-col shadow-xl"
                         : "w-full h-full flex flex-col border-r dark:border-zinc-700 shadow-xl"
                 } ${
                     isDarkMode

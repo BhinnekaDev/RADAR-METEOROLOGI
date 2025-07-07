@@ -558,7 +558,7 @@ export default function MapView({
                         />
                     )}
 
-                    <FlightMarkers />
+                    <FlightMarkers isDarkMode={isDarkMode} />
                 </MapContainer>
 
                 <Footer isDarkMode={isDarkMode} />
