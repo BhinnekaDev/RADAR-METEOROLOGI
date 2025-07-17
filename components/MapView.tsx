@@ -268,6 +268,18 @@ const AIRPORT_LOCATIONS = [
     },
     { name: "Rendani Airport", code: "MKW", lat: -0.891833, lon: 134.048531 },
     { name: "Siboru Airport", code: "SBV", lat: -2.532361, lon: 133.401 },
+    {
+        name: "Enggano Airport",
+        code: "EGN",
+        lat: -5.401944,
+        lon: 102.265833,
+    },
+    {
+        name: "Muko-Muko Airport",
+        code: "MPC",
+        lat: -2.533889,
+        lon: 101.093056,
+    },
 ];
 
 interface MapViewProps {
