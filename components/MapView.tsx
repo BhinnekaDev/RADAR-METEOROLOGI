@@ -349,7 +349,6 @@ const AIRPORT_LOCATIONS = [
         lat: -6.89306,
         lon: 107.015,
     },
-    { name: "Silampari", code: "LLJ", lat: -3.30111, lon: 102.98917 },
     { name: "Betoambari", code: "BUW", lat: -5.49278, lon: 122.63056 },
     { name: "Sugimanuru", code: "RAQ", lat: -4.92639, lon: 122.63667 },
     { name: "Lasikin", code: "LSW", lat: 2.40923, lon: 96.32659 },
