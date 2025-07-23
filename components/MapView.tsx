@@ -354,7 +354,7 @@ const AIRPORT_LOCATIONS = [
     { name: "Sugimanuru", code: "RAQ", lat: -4.92639, lon: 122.63667 },
     { name: "Lasikin", code: "LSW", lat: 2.40923, lon: 96.32659 },
     { name: "Atung Bungsu", code: "PXA", lat: -4.01833, lon: 103.34833 },
-    { name: "Binaka", code: "GNS", lat: 1.08278, lon: 97.60722 },
+    { name: "Binaka", code: "GNS", lat: 1.166389, lon: 97.704722 },
 ];
 
 interface MapViewProps {
