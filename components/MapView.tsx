@@ -278,7 +278,6 @@ const AIRPORT_LOCATIONS = [
         lat: -5.6615,
         lon: 132.7314,
     },
-    { name: "Miangas", code: "MNA", lat: 5.634167, lon: 126.582222 },
     { name: "Raden Sadjad", code: "NTX", lat: 3.908, lon: 108.388 },
     {
         name: "H.A.S. Hanandjoeddin International",
@@ -299,25 +298,7 @@ const AIRPORT_LOCATIONS = [
         lon: 108.118056,
     },
     { name: "Silampari", code: "LLG", lat: -3.285, lon: 102.91 },
-    {
-        name: "Betoambari",
-        code: "BUW",
-        lat: -5.486879,
-        lon: 122.569444,
-    },
-    {
-        name: "Sugimanuru",
-        code: "RAQ",
-        lat: -4.758333,
-        lon: 122.569444,
-    },
     { name: "Singkawang", code: "SKW", lat: 0.911111, lon: 108.926667 },
-    {
-        name: "Atung Bungsu",
-        code: "PXA",
-        lat: -4.133889,
-        lon: 103.203056,
-    },
     { name: "Rembele", code: "TXE", lat: 4.57722, lon: 96.64306 },
     { name: "Komodo", code: "LBJ", lat: -8.48667, lon: 119.88917 },
     { name: "Cut Nyak Dhien", code: "MEQ", lat: 4.04063, lon: 96.25354 },
@@ -362,13 +343,6 @@ const AIRPORT_LOCATIONS = [
     { name: "Karel Sadsuitubun", code: "LUV", lat: -5.72944, lon: 132.74833 },
     { name: "Miangas", code: "IAX", lat: 4.70833, lon: 126.21667 },
     { name: "Ranai-Natuna", code: "NTX", lat: 3.95167, lon: 108.41417 },
-    {
-        name: "H.A.S. Hanandjoeddin",
-        code: "TJQ",
-        lat: -2.74139,
-        lon: 107.62806,
-    },
-    { name: "Dhoho", code: "KDJ", lat: -7.84278, lon: 112.03528 },
     {
         name: "Kertajati International",
         code: "KJT",
