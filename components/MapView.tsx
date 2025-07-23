@@ -318,8 +318,6 @@ const AIRPORT_LOCATIONS = [
         lat: -4.133889,
         lon: 103.203056,
     },
-    { name: "Binaka", code: "GNS", lat: 1.166389, lon: 97.704722 },
-    { name: "Lasikin", code: "SIQ", lat: 2.225, lon: 96.316667 },
     { name: "Rembele", code: "TXE", lat: 4.57722, lon: 96.64306 },
     { name: "Komodo", code: "LBJ", lat: -8.48667, lon: 119.88917 },
     { name: "Cut Nyak Dhien", code: "MEQ", lat: 4.04063, lon: 96.25354 },
