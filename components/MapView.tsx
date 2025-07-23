@@ -333,7 +333,6 @@ const AIRPORT_LOCATIONS = [
         lon: 135.49654,
     },
     { name: "Tampa Padang", code: "MJU", lat: -2.58667, lon: 119.02917 },
-    { name: "Djalaluddin", code: "GTO", lat: 0.6356, lon: 122.8436 },
     {
         name: "Sultan Muhammad Salahuddin",
         code: "BMU",
